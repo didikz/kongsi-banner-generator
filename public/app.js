@@ -77,12 +77,7 @@ function download(canvas, filename) {
 }
 
 function chipClass(active) {
-  return (
-    'rounded-xl border px-4 py-2 text-sm font-semibold transition ' +
-    (active
-      ? 'border-teal bg-teal text-navy-deep'
-      : 'border-teal/30 text-pill hover:border-teal-light/60 hover:bg-teal/10')
-  )
+  return 'chip' + (active ? ' chip-active' : '')
 }
 
 // Role chips are static markup (avoids a layout shift); bind their handlers here.
@@ -160,11 +155,9 @@ function syncMirror() {
   const knob = $('mirror-knob')
   $('mirror-toggle').setAttribute('aria-checked', String(on))
   track.classList.toggle('bg-teal', on)
-  track.classList.toggle('bg-teal/30', !on)
+  track.classList.toggle('bg-navy/15', !on)
   knob.classList.toggle('translate-x-4', on)
   knob.classList.toggle('translate-x-0.5', !on)
-  knob.classList.toggle('bg-navy-deep', on)
-  knob.classList.toggle('bg-teal-light', !on)
 }
 
 function buildMirrorToggle(layout) {
@@ -201,16 +194,16 @@ async function renderBanners(layout) {
     const desc = roleDef.panel_variations[variation].description
     const card = document.createElement('article')
     card.className =
-      'overflow-hidden rounded-2xl border border-teal/20 bg-navy/60 p-3 shadow-lg shadow-black/30 sm:p-4'
+      'overflow-hidden rounded-2xl border border-navy/10 bg-page p-3 shadow-sm sm:p-4'
     card.innerHTML = `
-      <div class="preview overflow-hidden rounded-xl border border-teal/15 bg-navy-deep">
-        <div class="flex aspect-[4/1] items-center justify-center text-sm text-teal-light/75">
+      <div class="preview overflow-hidden rounded-xl border border-navy/10 bg-navy-deep">
+        <div class="flex aspect-[4/1] items-center justify-center text-sm text-ink-soft">
           Rendering…
         </div>
       </div>
       <div class="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <p class="text-sm text-teal-light/90">${desc}</p>
-        <button type="button" class="download inline-flex items-center justify-center gap-2 rounded-lg bg-teal px-4 py-2 text-sm font-bold text-navy-deep transition hover:bg-teal-light">
+        <p class="text-sm text-ink-soft">${desc}</p>
+        <button type="button" class="download inline-flex items-center justify-center gap-2 rounded-lg bg-teal px-4 py-2 text-sm font-bold text-white transition hover:bg-teal-deep">
           Download PNG
         </button>
       </div>`
@@ -257,7 +250,6 @@ async function main() {
       const result = $('result')
       result.classList.remove('hidden')
       result.focus({ preventScroll: true })
-      result.scrollIntoView({ block: 'start' })
       renderBanners(layout)
     })
   } catch (err) {

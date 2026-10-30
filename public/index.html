@@ -20,186 +20,205 @@
       type="font/woff2"
       crossorigin
     />
+    <link
+      rel="preload"
+      href="/fonts/montserrat-700.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="stylesheet" href="/app.css" />
   </head>
 
-  <body class="bg-navy-deep text-foam font-sans antialiased">
-    <!-- Ambient brand glow -->
+  <body class="bg-page font-sans antialiased">
+    <!-- Brand tint band across the top of the page -->
     <div
-      class="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[520px] bg-[radial-gradient(60%_100%_at_50%_0%,rgba(15,124,133,0.35),transparent_70%)]"
+      class="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[420px] bg-[linear-gradient(180deg,#eef9f8_0%,#f2f4f7_100%)]"
       aria-hidden="true"
     ></div>
 
-    <header class="mx-auto flex max-w-5xl items-center justify-between px-5 pt-8 sm:px-8">
-      <a href="/" class="flex items-center gap-3">
+    <header class="sticky top-0 z-20 border-b border-navy/10 bg-page/80 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 sm:px-8">
+        <a href="/" class="flex items-center gap-3">
+          <span class="grid size-9 place-items-center rounded-lg bg-navy">
+            <svg viewBox="0 0 32 32" class="size-6" aria-hidden="true">
+              <path d="M8 15.5h11l-2.5-4.5h-5L9 14.5v7h-1z" fill="#f4a22c" />
+              <path d="M24 16.5H13l2.5 4.5h5l2.5-3.5v-7h1z" fill="#5fd0d8" />
+            </svg>
+          </span>
+          <span class="leading-none">
+            <span class="block text-lg font-extrabold tracking-tight text-navy">KONGSI</span>
+            <span class="block text-xs font-medium text-ink-soft">Banner Generator</span>
+          </span>
+        </a>
         <span
-          class="grid size-9 place-items-center rounded-lg bg-navy ring-1 ring-teal/40"
+          class="hidden rounded-full border border-teal/30 bg-teal-soft px-3 py-1 text-xs font-semibold text-teal-deep sm:inline-flex"
         >
-          <svg viewBox="0 0 32 32" class="size-6" aria-hidden="true">
-            <path d="M8 15.5h11l-2.5-4.5h-5L9 14.5v7h-1z" fill="#f4a22c" />
-            <path d="M24 16.5H13l2.5 4.5h5l2.5-3.5v-7h1z" fill="#5fd0d8" />
-          </svg>
+          LinkedIn · 1584×396
         </span>
-        <span class="leading-none">
-          <span class="block text-lg font-extrabold tracking-tight text-foam">KONGSI</span>
-          <span class="block text-xs font-medium text-teal-light">Banner Generator</span>
-        </span>
-      </a>
-      <span
-        class="hidden rounded-full border border-teal/30 bg-navy/60 px-3 py-1 text-xs font-medium text-pill sm:inline-flex"
-      >
-        LinkedIn · 1584×396
-      </span>
+      </div>
     </header>
 
-    <main class="mx-auto max-w-5xl px-5 pb-24 sm:px-8">
-      <section class="pt-14 pb-10 sm:pt-20">
-        <h1 class="max-w-2xl text-3xl font-extrabold tracking-tight text-balance sm:text-5xl">
+    <main class="mx-auto max-w-6xl px-5 pb-24 sm:px-8">
+      <section class="pt-10 pb-8 sm:pt-14">
+        <h1
+          class="max-w-2xl font-display text-3xl font-extrabold tracking-tight text-navy sm:text-[2.75rem] sm:leading-[1.1]"
+        >
           Your Kongsi banner, ready for LinkedIn.
         </h1>
-        <p class="mt-4 max-w-xl text-base text-teal-light sm:text-lg">
+        <p class="mt-3 max-w-xl text-base text-ink-soft sm:text-lg">
           Pick your role, generate the three panel styles, and download each at the
           full 1584×396 size.
         </p>
       </section>
 
-      <section
-        class="rounded-2xl border border-teal/20 bg-navy/60 p-5 shadow-xl shadow-black/30 sm:p-7"
-      >
-        <h2 class="text-sm font-semibold tracking-wide text-pill">1 · Choose your role</h2>
-        <div
-          id="role-list"
-          class="mt-4 grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap"
-          role="group"
-          aria-label="Select your role"
-        >
-          <button type="button" data-role="engineering" class="rounded-xl border border-teal/30 px-4 py-2 text-sm font-semibold text-pill transition hover:border-teal-light/60 hover:bg-teal/10" aria-pressed="false">Engineering</button>
-          <button type="button" data-role="finance" class="rounded-xl border border-teal/30 px-4 py-2 text-sm font-semibold text-pill transition hover:border-teal-light/60 hover:bg-teal/10" aria-pressed="false">Finance</button>
-          <button type="button" data-role="operations" class="rounded-xl border border-teal/30 px-4 py-2 text-sm font-semibold text-pill transition hover:border-teal-light/60 hover:bg-teal/10" aria-pressed="false">Operations</button>
-          <button type="button" data-role="sales" class="rounded-xl border border-teal/30 px-4 py-2 text-sm font-semibold text-pill transition hover:border-teal-light/60 hover:bg-teal/10" aria-pressed="false">Sales</button>
-          <button type="button" data-role="product" class="rounded-xl border border-teal/30 px-4 py-2 text-sm font-semibold text-pill transition hover:border-teal-light/60 hover:bg-teal/10" aria-pressed="false">Product</button>
-          <button type="button" data-role="design" class="rounded-xl border border-teal/30 px-4 py-2 text-sm font-semibold text-pill transition hover:border-teal-light/60 hover:bg-teal/10" aria-pressed="false">Design</button>
-          <button type="button" data-role="people-ops" class="rounded-xl border border-teal/30 px-4 py-2 text-sm font-semibold text-pill transition hover:border-teal-light/60 hover:bg-teal/10" aria-pressed="false">People Ops</button>
-          <button type="button" data-role="legal" class="rounded-xl border border-teal/30 px-4 py-2 text-sm font-semibold text-pill transition hover:border-teal-light/60 hover:bg-teal/10" aria-pressed="false">Legal</button>
-          <button type="button" data-role="executives" class="rounded-xl border border-teal/30 px-4 py-2 text-sm font-semibold text-pill transition hover:border-teal-light/60 hover:bg-teal/10" aria-pressed="false">Executives</button>
-          <button type="button" data-role="crew" class="rounded-xl border border-teal/30 px-4 py-2 text-sm font-semibold text-pill transition hover:border-teal-light/60 hover:bg-teal/10" aria-pressed="false">Crew</button>
-        </div>
-
-        <button
-          id="generate-btn"
-          type="button"
-          disabled
-          class="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-orange px-6 py-3 text-sm font-bold text-navy-deep transition hover:bg-orange/90 disabled:cursor-not-allowed disabled:bg-teal/20 disabled:text-teal-light/60"
-        >
-          Generate banner
-        </button>
-        <p id="generate-hint" class="mt-3 text-sm text-teal-light/80">
-          Select a role to continue.
-        </p>
-      </section>
-
-      <section id="result" class="mt-14 hidden scroll-mt-6 focus:outline-none" tabindex="-1">
-        <div
-          class="flex flex-col gap-4 rounded-2xl border border-teal/20 bg-navy/60 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6"
-        >
-          <div>
-            <h2 class="text-sm font-semibold tracking-wide text-pill">2 · Tune the mascot</h2>
-            <p class="mt-1 text-sm text-teal-light/80">
-              Pose is preset per role; mirror flips Koko horizontally.
-            </p>
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-[380px_1fr] lg:items-start">
+        <!-- Controls -->
+        <section class="rounded-2xl border border-navy/10 bg-surface p-5 shadow-sm sm:p-6">
+          <h2 class="text-sm font-semibold tracking-wide text-ink-soft">1 · Choose your role</h2>
+          <div
+            id="role-list"
+            class="mt-4 grid grid-cols-2 gap-2.5"
+            role="group"
+            aria-label="Select your role"
+          >
+            <button type="button" data-role="engineering" class="chip" aria-pressed="false">Engineering</button>
+            <button type="button" data-role="finance" class="chip" aria-pressed="false">Finance</button>
+            <button type="button" data-role="operations" class="chip" aria-pressed="false">Operations</button>
+            <button type="button" data-role="sales" class="chip" aria-pressed="false">Sales</button>
+            <button type="button" data-role="product" class="chip" aria-pressed="false">Product</button>
+            <button type="button" data-role="design" class="chip" aria-pressed="false">Design</button>
+            <button type="button" data-role="people-ops" class="chip" aria-pressed="false">People Ops</button>
+            <button type="button" data-role="legal" class="chip" aria-pressed="false">Legal</button>
+            <button type="button" data-role="executives" class="chip" aria-pressed="false">Executives</button>
+            <button type="button" data-role="crew" class="chip" aria-pressed="false">Crew</button>
           </div>
-          <div class="flex flex-wrap items-center gap-2.5">
-            <div
-              id="pose-list"
-              class="flex flex-wrap gap-2"
-              role="group"
-              aria-label="Mascot pose"
-            ></div>
-            <button
-              id="mirror-toggle"
-              type="button"
-              role="switch"
-              aria-checked="false"
-              class="inline-flex items-center gap-2.5 rounded-xl border border-teal/30 px-3 py-2 text-sm font-medium text-pill transition hover:border-teal-light/60"
-            >
-              <span class="text-teal-light">Mirror</span>
-              <span
-                id="mirror-track"
-                class="relative inline-flex h-5 w-9 items-center rounded-full bg-teal/30 transition-colors"
+
+          <button
+            id="generate-btn"
+            type="button"
+            disabled
+            class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-orange px-6 py-3 text-sm font-bold text-navy-deep shadow-sm transition hover:bg-orange-deep disabled:cursor-not-allowed disabled:bg-navy/10 disabled:text-ink-soft"
+          >
+            Generate banner
+          </button>
+          <p id="generate-hint" class="mt-3 text-sm text-ink-soft">
+            Select a role to continue.
+          </p>
+        </section>
+
+        <!-- Result: the generated banner appears here, no scrolling needed -->
+        <section
+          id="result"
+          class="hidden rounded-2xl border border-teal/30 bg-surface shadow-sm focus:outline-none"
+          tabindex="-1"
+        >
+          <div class="flex flex-col gap-3 border-b border-navy/10 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <div>
+              <h2 class="text-sm font-semibold tracking-wide text-ink-soft">2 · Tune the mascot</h2>
+              <p class="mt-1 text-sm text-ink-soft">
+                Pose is preset per role; mirror flips Koko horizontally.
+              </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2.5">
+              <div
+                id="pose-list"
+                class="flex flex-wrap gap-2"
+                role="group"
+                aria-label="Mascot pose"
+              ></div>
+              <button
+                id="mirror-toggle"
+                type="button"
+                role="switch"
+                aria-checked="false"
+                class="inline-flex items-center gap-2.5 rounded-xl border border-navy/15 px-3 py-2 text-sm font-semibold text-ink transition hover:border-teal/50"
               >
+                <span>Mirror</span>
                 <span
-                  id="mirror-knob"
-                  class="inline-block size-4 translate-x-0.5 rounded-full bg-teal-light transition-transform"
-                ></span>
-              </span>
-            </button>
+                  id="mirror-track"
+                  class="relative inline-flex h-5 w-9 items-center rounded-full bg-navy/15 transition-colors"
+                >
+                  <span
+                    id="mirror-knob"
+                    class="inline-block size-4 translate-x-0.5 rounded-full bg-white shadow-sm transition-transform"
+                  ></span>
+                </span>
+              </button>
+            </div>
           </div>
-        </div>
 
-        <h2 class="mt-10 text-sm font-semibold tracking-wide text-pill">
-          3 · Download your banners
-        </h2>
-        <p class="mt-1 text-sm text-teal-light/80">
-          All three panel styles for <span id="result-role" class="font-semibold text-foam"></span>.
-        </p>
-        <div id="banner-list" class="mt-5 flex flex-col gap-6"></div>
-      </section>
+          <div class="px-5 py-5 sm:px-6">
+            <h2 class="text-sm font-semibold tracking-wide text-ink-soft">
+              3 · Download your banners
+            </h2>
+            <p class="mt-1 text-sm text-ink-soft">
+              All three panel styles for
+              <span id="result-role" class="font-semibold text-navy"></span>.
+            </p>
+            <div id="banner-list" class="mt-4 flex flex-col gap-5"></div>
+          </div>
+        </section>
+      </div>
 
+      <!-- Reference gallery, clearly separated from the generated output -->
       <section class="mt-16">
-        <h2 class="text-xl font-bold tracking-tight text-foam">See how they look</h2>
-        <p class="mt-2 text-sm text-teal-light/80">
-          Sample banners composed from the same components you download.
-        </p>
-        <div id="samples" class="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
-          <figure class="overflow-hidden rounded-xl border border-teal/20 bg-navy/60" data-role="design" data-variant="v2">
-            <img src="/assets/examples/webp/recompose-design-v2.webp" alt="Design sample banner" loading="lazy" decoding="async" width="800" height="200" class="block h-auto w-full" />
-            <figcaption class="flex h-11 items-center justify-between gap-3 px-4 text-sm">
-              <span class="font-semibold text-foam" data-sample-role></span>
-              <span class="truncate text-teal-light/80" data-sample-desc></span>
-            </figcaption>
-          </figure>
-          <figure class="overflow-hidden rounded-xl border border-teal/20 bg-navy/60" data-role="finance" data-variant="v1">
-            <img src="/assets/examples/webp/recompose-finance-v1.webp" alt="Finance sample banner" loading="lazy" decoding="async" width="800" height="200" class="block h-auto w-full" />
-            <figcaption class="flex h-11 items-center justify-between gap-3 px-4 text-sm">
-              <span class="font-semibold text-foam" data-sample-role></span>
-              <span class="truncate text-teal-light/80" data-sample-desc></span>
-            </figcaption>
-          </figure>
-          <figure class="overflow-hidden rounded-xl border border-teal/20 bg-navy/60" data-role="finance" data-variant="v2">
-            <img src="/assets/examples/webp/recompose-finance-v2.webp" alt="Finance sample banner" loading="lazy" decoding="async" width="800" height="200" class="block h-auto w-full" />
-            <figcaption class="flex h-11 items-center justify-between gap-3 px-4 text-sm">
-              <span class="font-semibold text-foam" data-sample-role></span>
-              <span class="truncate text-teal-light/80" data-sample-desc></span>
-            </figcaption>
-          </figure>
-          <figure class="overflow-hidden rounded-xl border border-teal/20 bg-navy/60" data-role="legal" data-variant="v1">
-            <img src="/assets/examples/webp/recompose-legal-v1.webp" alt="Legal sample banner" loading="lazy" decoding="async" width="800" height="200" class="block h-auto w-full" />
-            <figcaption class="flex h-11 items-center justify-between gap-3 px-4 text-sm">
-              <span class="font-semibold text-foam" data-sample-role></span>
-              <span class="truncate text-teal-light/80" data-sample-desc></span>
-            </figcaption>
-          </figure>
-          <figure class="overflow-hidden rounded-xl border border-teal/20 bg-navy/60" data-role="product" data-variant="v3">
-            <img src="/assets/examples/webp/recompose-product-v3.webp" alt="Product sample banner" loading="lazy" decoding="async" width="800" height="200" class="block h-auto w-full" />
-            <figcaption class="flex h-11 items-center justify-between gap-3 px-4 text-sm">
-              <span class="font-semibold text-foam" data-sample-role></span>
-              <span class="truncate text-teal-light/80" data-sample-desc></span>
-            </figcaption>
-          </figure>
-          <figure class="overflow-hidden rounded-xl border border-teal/20 bg-navy/60" data-role="sales" data-variant="v2">
-            <img src="/assets/examples/webp/recompose-sales-v2.webp" alt="Sales sample banner" loading="lazy" decoding="async" width="800" height="200" class="block h-auto w-full" />
-            <figcaption class="flex h-11 items-center justify-between gap-3 px-4 text-sm">
-              <span class="font-semibold text-foam" data-sample-role></span>
-              <span class="truncate text-teal-light/80" data-sample-desc></span>
-            </figcaption>
-          </figure>
+        <div class="border-t border-navy/10 pt-8">
+          <h2 class="font-display text-xl font-bold tracking-tight text-navy">Example banners</h2>
+          <p class="mt-1.5 text-sm text-ink-soft">
+            A reference gallery composed from the same components you download.
+          </p>
+          <div id="samples" class="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <figure class="overflow-hidden rounded-xl border border-navy/10 bg-surface" data-role="design" data-variant="v2">
+              <img src="/assets/examples/webp/recompose-design-v2.webp" alt="Design sample banner" loading="lazy" decoding="async" width="800" height="200" class="block h-auto w-full" />
+              <figcaption class="flex h-11 items-center justify-between gap-3 px-4 text-sm">
+                <span class="font-semibold text-navy" data-sample-role></span>
+                <span class="truncate text-ink-soft" data-sample-desc></span>
+              </figcaption>
+            </figure>
+            <figure class="overflow-hidden rounded-xl border border-navy/10 bg-surface" data-role="finance" data-variant="v1">
+              <img src="/assets/examples/webp/recompose-finance-v1.webp" alt="Finance sample banner" loading="lazy" decoding="async" width="800" height="200" class="block h-auto w-full" />
+              <figcaption class="flex h-11 items-center justify-between gap-3 px-4 text-sm">
+                <span class="font-semibold text-navy" data-sample-role></span>
+                <span class="truncate text-ink-soft" data-sample-desc></span>
+              </figcaption>
+            </figure>
+            <figure class="overflow-hidden rounded-xl border border-navy/10 bg-surface" data-role="finance" data-variant="v2">
+              <img src="/assets/examples/webp/recompose-finance-v2.webp" alt="Finance sample banner" loading="lazy" decoding="async" width="800" height="200" class="block h-auto w-full" />
+              <figcaption class="flex h-11 items-center justify-between gap-3 px-4 text-sm">
+                <span class="font-semibold text-navy" data-sample-role></span>
+                <span class="truncate text-ink-soft" data-sample-desc></span>
+              </figcaption>
+            </figure>
+            <figure class="overflow-hidden rounded-xl border border-navy/10 bg-surface" data-role="legal" data-variant="v1">
+              <img src="/assets/examples/webp/recompose-legal-v1.webp" alt="Legal sample banner" loading="lazy" decoding="async" width="800" height="200" class="block h-auto w-full" />
+              <figcaption class="flex h-11 items-center justify-between gap-3 px-4 text-sm">
+                <span class="font-semibold text-navy" data-sample-role></span>
+                <span class="truncate text-ink-soft" data-sample-desc></span>
+              </figcaption>
+            </figure>
+            <figure class="overflow-hidden rounded-xl border border-navy/10 bg-surface" data-role="product" data-variant="v3">
+              <img src="/assets/examples/webp/recompose-product-v3.webp" alt="Product sample banner" loading="lazy" decoding="async" width="800" height="200" class="block h-auto w-full" />
+              <figcaption class="flex h-11 items-center justify-between gap-3 px-4 text-sm">
+                <span class="font-semibold text-navy" data-sample-role></span>
+                <span class="truncate text-ink-soft" data-sample-desc></span>
+              </figcaption>
+            </figure>
+            <figure class="overflow-hidden rounded-xl border border-navy/10 bg-surface" data-role="sales" data-variant="v2">
+              <img src="/assets/examples/webp/recompose-sales-v2.webp" alt="Sales sample banner" loading="lazy" decoding="async" width="800" height="200" class="block h-auto w-full" />
+              <figcaption class="flex h-11 items-center justify-between gap-3 px-4 text-sm">
+                <span class="font-semibold text-navy" data-sample-role></span>
+                <span class="truncate text-ink-soft" data-sample-desc></span>
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer class="border-t border-teal/15">
+    <footer class="border-t border-navy/10">
       <div
-        class="mx-auto flex max-w-5xl flex-col items-start justify-between gap-2 px-5 py-8 text-sm text-teal-light/70 sm:flex-row sm:items-center sm:px-8"
+        class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-2 px-5 py-8 text-sm text-ink-soft sm:flex-row sm:items-center sm:px-8"
       >
         <p>Assets by Kongsi design — official Koko only.</p>
         <p>Built for Kongsi crew.</p>

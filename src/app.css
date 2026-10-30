@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Self-hosted Inter (variable, latin) — avoids a render-blocking third-party stylesheet. */
+/* Self-hosted fonts — no render-blocking third-party stylesheet (CSP: font-src 'self'). */
 @font-face {
   font-family: "Inter";
   font-style: normal;
@@ -8,19 +8,47 @@
   font-display: swap;
   src: url("/fonts/inter-latin.woff2") format("woff2");
 }
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/montserrat-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/montserrat-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/montserrat-800.woff2") format("woff2");
+}
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Montserrat", "Inter", ui-sans-serif, system-ui, sans-serif;
 
+  /* Kongsi brand palette (from shipkongsi.com). */
   --color-navy: #0d1b2a;
   --color-navy-deep: #07111c;
   --color-teal: #0f7c85;
-  --color-teal-light: #5fd0d8;
+  --color-teal-deep: #0a5a62;
+  --color-teal-soft: #eef9f8;
   --color-orange: #f4a22c;
+  --color-orange-deep: #f28c28;
   --color-green: #74b943;
   --color-blue: #5ca8ff;
-  --color-pill: #9ee4e8;
-  --color-foam: #eaf7f7;
+  --color-red: #e53935;
+  --color-ink: #172235;
+  --color-ink-soft: #4a5568;
+  --color-page: #f2f4f7;
+  --color-surface: #ffffff;
 }
 
 @layer base {
@@ -41,21 +69,45 @@
   body {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    color: var(--color-ink);
   }
 
   ::selection {
     background: var(--color-teal);
-    color: var(--color-navy-deep);
+    color: #ffffff;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-teal-light);
+    outline: 2px solid var(--color-teal);
     outline-offset: 2px;
     border-radius: 4px;
   }
 
-  /* Tailwind keeps scrollbars default; theme the light overlay surfaces. */
   * {
-    scrollbar-color: var(--color-teal) var(--color-navy-deep);
+    scrollbar-color: var(--color-teal) var(--color-page);
+  }
+}
+
+@layer components {
+  .chip {
+    border-radius: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--color-navy) 15%, transparent);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    background: var(--color-surface);
+    transition:
+      border-color 150ms ease,
+      background-color 150ms ease,
+      color 150ms ease;
+  }
+  .chip:hover {
+    border-color: color-mix(in srgb, var(--color-teal) 55%, transparent);
+  }
+  .chip-active {
+    border-color: var(--color-teal);
+    background: var(--color-teal);
+    color: #ffffff;
   }
 }

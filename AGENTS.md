@@ -47,13 +47,21 @@ Images must stay same-origin: loading them cross-origin taints the canvas and br
 ## Tailwind v4 quirks
 
 - No `tailwind.config`; brand colors/fonts are `@theme` tokens in `src/app.css`.
+- The page is the **light Kongsi theme** (matches shipkongsi.com): `page` `#f2f4f7`,
+  `surface` white, `ink` `#172235`, `ink-soft` `#4a5568`, plus `teal-deep`, `teal-soft`,
+  `orange-deep`, `red`. The old `teal-light`/`pill`/`foam` tokens are gone.
+- The banner canvas preview uses `bg-navy-deep` and stays **dark on purpose** — the LinkedIn
+  banner itself is dark navy. Do not "fix" it to match the light page.
+- Chip styling lives in `src/app.css` as `.chip`/`.chip-active` component classes; `app.js`
+  only swaps those two class names.
 - The scanner reads `public/app.js` too, but **dynamic class-name concatenation**
   (`'bg-' + color`) is not detected — use full literal class strings.
 - `public/app.css` is generated (built from `src/app.css`) and ships with the deploy; never
   hand-edit it.
-- Fonts: Inter is self-hosted at `public/fonts/inter-latin.woff2` (variable, latin) and
-  preloaded from `public/index.html`. Do not re-add the Google Fonts stylesheet — it is a
-  render-blocking third-party request and the CSP no longer allows it.
+- Fonts are self-hosted at `public/fonts/` — Inter (`inter-latin.woff2`, variable) for body,
+  Montserrat (`montserrat-{600,700,800}.woff2`) for `font-display` headings — and preloaded
+  from `public/index.html`. Do not re-add the Google Fonts stylesheet: it is render-blocking
+  and the CSP no longer allows it.
 - Adding a third-party origin (font/CDN) requires updating the CSP meta in
   `public/index.html`. HTML is served with `Cache-Control: no-transform` (see
   `src/index.ts`) so Cloudflare cannot inject its Web Analytics beacon; if you remove that
