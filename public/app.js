@@ -121,8 +121,8 @@ function showResultPlaceholder() {
 
 function setMascotControlsLocked(locked) {
   const el = $('mascot-controls')
+  el.classList.toggle('locked-control', locked)
   el.classList.toggle('pointer-events-none', locked)
-  el.classList.toggle('opacity-60', locked)
 }
 
 // Warm the browser cache while the user reads, so the first Generate is instant.
