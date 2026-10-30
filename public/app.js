@@ -105,10 +105,24 @@ function selectRole(layout, role) {
   generate.disabled = false
   $('generate-hint').textContent = `${ROLE_LABELS[role] ?? role} selected — hit Generate banner.`
 
+  $('result-role').textContent = ROLE_LABELS[role] ?? role
+  showResultPlaceholder()
+  setMascotControlsLocked(false)
+
   syncPoseChips(layout)
   syncMirror()
   prefetchRoleAssets(layout, role)
-  $('result').classList.add('hidden')
+}
+
+function showResultPlaceholder() {
+  $('result-empty').classList.remove('hidden')
+  $('banner-list').innerHTML = ''
+}
+
+function setMascotControlsLocked(locked) {
+  const el = $('mascot-controls')
+  el.classList.toggle('pointer-events-none', locked)
+  el.classList.toggle('opacity-60', locked)
 }
 
 // Warm the browser cache while the user reads, so the first Generate is instant.
@@ -188,6 +202,7 @@ async function renderBanners(layout) {
   const variations = Object.keys(roleDef.panel_variations)
 
   $('result-role').textContent = ROLE_LABELS[role] ?? role
+  $('result-empty').classList.add('hidden')
   list.innerHTML = ''
 
   const cards = variations.map((variation) => {
@@ -248,7 +263,6 @@ async function main() {
     $('generate-btn').addEventListener('click', () => {
       if (!state.role) return
       const result = $('result')
-      result.classList.remove('hidden')
       result.focus({ preventScroll: true })
       renderBanners(layout)
     })
