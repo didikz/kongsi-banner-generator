@@ -1,4 +1,16 @@
 # Browser cache for static assets. Applies to asset-served responses only; the worker sets
 # its own Cache-Control on the HTML shell.
-/*
+#
+# HTML-referenced JS/CSS must revalidate so a deploy can never pair new HTML with a stale
+# script (that mismatch breaks the page). Content assets and fonts can be cached.
+/assets/*
   Cache-Control: public, max-age=600, stale-while-revalidate=86400
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/app.js
+  Cache-Control: no-cache
+
+/app.css
+  Cache-Control: no-cache
