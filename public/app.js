@@ -82,7 +82,7 @@ function chipClass(active) {
 
 // Role chips are static markup (avoids a layout shift); bind their handlers here.
 function wireRoleChips(layout) {
-  for (const btn of $('role-list').children) {
+  for (const btn of $('role-list').querySelectorAll('button[data-role]')) {
     const role = btn.dataset.role
     if (role && layout.roles[role]) {
       btn.addEventListener('click', () => selectRole(layout, role))
@@ -95,7 +95,7 @@ function selectRole(layout, role) {
   state.pose = layout.roles[role].mascot.pose
   state.mirror = false
 
-  for (const btn of $('role-list').children) {
+  for (const btn of $('role-list').querySelectorAll('button[data-role]')) {
     const active = btn.dataset.role === role
     btn.className = chipClass(active)
     btn.setAttribute('aria-pressed', String(active))
