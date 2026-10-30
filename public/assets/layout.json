@@ -1,0 +1,749 @@
+{
+  "canvas": {
+    "width": 1584,
+    "height": 396
+  },
+  "fonts": {
+    "primary": "Inter",
+    "mono_engineering_only": "IBM Plex Mono"
+  },
+  "colors": {
+    "navy": "#0d1b2a",
+    "navy_deep": "#07111c",
+    "teal": "#0f7c85",
+    "teal_light": "#5fd0d8",
+    "orange": "#F4A22C",
+    "green": "#74b943",
+    "blue": "#5CA8FF",
+    "pill_text": "#9ee4e8"
+  },
+  "background": {
+    "file": "background/background-1584x396.png",
+    "file_2x": "background/background-3168x792.png",
+    "includes": [
+      "navy gradient",
+      "teal glow (right)",
+      "route dashed lines + pins",
+      "pill",
+      "logo + KONGSI wordmark",
+      "tagline",
+      "bottom accent bar"
+    ],
+    "excludes": [
+      "role panel",
+      "mascot"
+    ]
+  },
+  "panel_slot": {
+    "x": 900,
+    "y": 92,
+    "w": 340,
+    "h": 210,
+    "capture_padding": 28,
+    "capture_size": {
+      "w": 396,
+      "h": 266
+    },
+    "note": "Panel PNGs include padding around the 340\u00d7210 slot for rotation/shadow. When compositing, place the PNG at (slot.x - pad, slot.y - pad)."
+  },
+  "mascot_poses": {
+    "welcome": {
+      "source_asset": "koko-welcome-trim.png",
+      "banner_placement": {
+        "height": 300,
+        "left": 1240,
+        "top": 48
+      },
+      "files": {
+        "original": "koko-welcome-original.png",
+        "sizes": {
+          "sm": {
+            "file": "koko-welcome-sm.png",
+            "mirror": "koko-welcome-sm-mirror.png",
+            "width": 134,
+            "height": 216
+          },
+          "md": {
+            "file": "koko-welcome-md.png",
+            "mirror": "koko-welcome-md-mirror.png",
+            "width": 186,
+            "height": 300
+          },
+          "lg": {
+            "file": "koko-welcome-lg.png",
+            "mirror": "koko-welcome-lg-mirror.png",
+            "width": 227,
+            "height": 366
+          }
+        }
+      },
+      "note": "Official Kongsi Koko only. Drop-shadow in banners is CSS (not baked into PNGs)."
+    },
+    "celebrate": {
+      "source_asset": "koko-celebrate-trim.png",
+      "banner_placement": {
+        "height": 300,
+        "left": 1240,
+        "top": 48
+      },
+      "files": {
+        "original": "koko-celebrate-original.png",
+        "sizes": {
+          "sm": {
+            "file": "koko-celebrate-sm.png",
+            "mirror": "koko-celebrate-sm-mirror.png",
+            "width": 159,
+            "height": 216
+          },
+          "md": {
+            "file": "koko-celebrate-md.png",
+            "mirror": "koko-celebrate-md-mirror.png",
+            "width": 220,
+            "height": 300
+          },
+          "lg": {
+            "file": "koko-celebrate-lg.png",
+            "mirror": "koko-celebrate-lg-mirror.png",
+            "width": 269,
+            "height": 366
+          }
+        }
+      },
+      "note": "Official Kongsi Koko only. Drop-shadow in banners is CSS (not baked into PNGs)."
+    },
+    "climb-higher": {
+      "source_asset": "koko-climb-trim.png",
+      "banner_placement": {
+        "height": 275,
+        "left": 1210,
+        "top": 52
+      },
+      "files": {
+        "original": "koko-climb-higher-original.png",
+        "sizes": {
+          "sm": {
+            "file": "koko-climb-higher-sm.png",
+            "mirror": "koko-climb-higher-sm-mirror.png",
+            "width": 164,
+            "height": 198
+          },
+          "md": {
+            "file": "koko-climb-higher-md.png",
+            "mirror": "koko-climb-higher-md-mirror.png",
+            "width": 227,
+            "height": 275
+          },
+          "lg": {
+            "file": "koko-climb-higher-lg.png",
+            "mirror": "koko-climb-higher-lg-mirror.png",
+            "width": 278,
+            "height": 336
+          }
+        }
+      },
+      "note": "Official Kongsi Koko only. Drop-shadow in banners is CSS (not baked into PNGs)."
+    },
+    "carry-parcel": {
+      "source_asset": "koko-carry-trim.png",
+      "banner_placement": {
+        "height": 300,
+        "left": 1240,
+        "top": 48
+      },
+      "files": {
+        "original": "koko-carry-parcel-original.png",
+        "sizes": {
+          "sm": {
+            "file": "koko-carry-parcel-sm.png",
+            "mirror": "koko-carry-parcel-sm-mirror.png",
+            "width": 143,
+            "height": 216
+          },
+          "md": {
+            "file": "koko-carry-parcel-md.png",
+            "mirror": "koko-carry-parcel-md-mirror.png",
+            "width": 199,
+            "height": 300
+          },
+          "lg": {
+            "file": "koko-carry-parcel-lg.png",
+            "mirror": "koko-carry-parcel-lg-mirror.png",
+            "width": 243,
+            "height": 366
+          }
+        }
+      },
+      "note": "Official Kongsi Koko only. Drop-shadow in banners is CSS (not baked into PNGs)."
+    }
+  },
+  "roles": {
+    "engineering": {
+      "default_panel": "role-panels/engineering/engineering-v1.png",
+      "panel_variations": {
+        "v1": {
+          "file": "role-panels/engineering/engineering-v1.png",
+          "description": "Go editor shipment.go",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          },
+          "file_2x": "role-panels/engineering/engineering-v1@2x.png"
+        },
+        "v2": {
+          "file": "role-panels/engineering/engineering-v2.png",
+          "description": "Terminal deploy log",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v3": {
+          "file": "role-panels/engineering/engineering-v3.png",
+          "description": "API request/response card",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        }
+      },
+      "mascot": {
+        "pose": "welcome",
+        "default_file": "mascot/welcome/koko-welcome-md.png",
+        "place_at": {
+          "x": 1240,
+          "y": 48,
+          "height": 300
+        },
+        "mirror_available": true,
+        "sizes_available": [
+          "sm",
+          "md",
+          "lg"
+        ]
+      }
+    },
+    "finance": {
+      "default_panel": "role-panels/finance/finance-v1.png",
+      "panel_variations": {
+        "v1": {
+          "file": "role-panels/finance/finance-v1.png",
+          "description": "Cream receipt + LUNAS stamp",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v2": {
+          "file": "role-panels/finance/finance-v2.png",
+          "description": "Mini budget bar chart",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v3": {
+          "file": "role-panels/finance/finance-v3.png",
+          "description": "Ledger / calculator card",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        }
+      },
+      "mascot": {
+        "pose": "celebrate",
+        "default_file": "mascot/celebrate/koko-celebrate-md.png",
+        "place_at": {
+          "x": 1240,
+          "y": 48,
+          "height": 300
+        },
+        "mirror_available": true,
+        "sizes_available": [
+          "sm",
+          "md",
+          "lg"
+        ]
+      }
+    },
+    "operations": {
+      "default_panel": "role-panels/operations/operations-v1.png",
+      "panel_variations": {
+        "v1": {
+          "file": "role-panels/operations/operations-v1.png",
+          "description": "Dispatch map + capacity bar",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v2": {
+          "file": "role-panels/operations/operations-v2.png",
+          "description": "Loading-dock checklist",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v3": {
+          "file": "role-panels/operations/operations-v3.png",
+          "description": "Truck capacity gauge",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        }
+      },
+      "mascot": {
+        "pose": "carry-parcel",
+        "default_file": "mascot/carry-parcel/koko-carry-parcel-md.png",
+        "place_at": {
+          "x": 1240,
+          "y": 48,
+          "height": 300
+        },
+        "mirror_available": true,
+        "sizes_available": [
+          "sm",
+          "md",
+          "lg"
+        ]
+      }
+    },
+    "sales": {
+      "default_panel": "role-panels/sales/sales-v1.png",
+      "panel_variations": {
+        "v1": {
+          "file": "role-panels/sales/sales-v1.png",
+          "description": "Deal won card + stage chips",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v2": {
+          "file": "role-panels/sales/sales-v2.png",
+          "description": "Pipeline funnel",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v3": {
+          "file": "role-panels/sales/sales-v3.png",
+          "description": "Handshake proposal card",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        }
+      },
+      "mascot": {
+        "pose": "celebrate",
+        "default_file": "mascot/celebrate/koko-celebrate-md.png",
+        "place_at": {
+          "x": 1240,
+          "y": 48,
+          "height": 300
+        },
+        "mirror_available": true,
+        "sizes_available": [
+          "sm",
+          "md",
+          "lg"
+        ]
+      }
+    },
+    "product": {
+      "default_panel": "role-panels/product/product-v1.png",
+      "panel_variations": {
+        "v1": {
+          "file": "role-panels/product/product-v1.png",
+          "description": "Sticky-note kanban board",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v2": {
+          "file": "role-panels/product/product-v2.png",
+          "description": "Roadmap timeline",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v3": {
+          "file": "role-panels/product/product-v3.png",
+          "description": "User-story card",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        }
+      },
+      "mascot": {
+        "pose": "welcome",
+        "default_file": "mascot/welcome/koko-welcome-md.png",
+        "place_at": {
+          "x": 1240,
+          "y": 48,
+          "height": 300
+        },
+        "mirror_available": true,
+        "sizes_available": [
+          "sm",
+          "md",
+          "lg"
+        ]
+      }
+    },
+    "design": {
+      "default_panel": "role-panels/design/design-v1.png",
+      "panel_variations": {
+        "v1": {
+          "file": "role-panels/design/design-v1.png",
+          "description": "Design-tool artboard",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v2": {
+          "file": "role-panels/design/design-v2.png",
+          "description": "Color palette + type specimen",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v3": {
+          "file": "role-panels/design/design-v3.png",
+          "description": "Component library grid",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        }
+      },
+      "mascot": {
+        "pose": "climb-higher",
+        "default_file": "mascot/climb-higher/koko-climb-higher-md.png",
+        "place_at": {
+          "x": 1210,
+          "y": 52,
+          "height": 275
+        },
+        "mirror_available": true,
+        "sizes_available": [
+          "sm",
+          "md",
+          "lg"
+        ]
+      }
+    },
+    "people-ops": {
+      "default_panel": "role-panels/people-ops/people-ops-v1.png",
+      "panel_variations": {
+        "v1": {
+          "file": "role-panels/people-ops/people-ops-v1.png",
+          "description": "Welcome / ID card",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v2": {
+          "file": "role-panels/people-ops/people-ops-v2.png",
+          "description": "Team org bubbles",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v3": {
+          "file": "role-panels/people-ops/people-ops-v3.png",
+          "description": "Culture values card",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        }
+      },
+      "mascot": {
+        "pose": "celebrate",
+        "default_file": "mascot/celebrate/koko-celebrate-md.png",
+        "place_at": {
+          "x": 1240,
+          "y": 48,
+          "height": 300
+        },
+        "mirror_available": true,
+        "sizes_available": [
+          "sm",
+          "md",
+          "lg"
+        ]
+      }
+    },
+    "legal": {
+      "default_panel": "role-panels/legal/legal-v1.png",
+      "panel_variations": {
+        "v1": {
+          "file": "role-panels/legal/legal-v1.png",
+          "description": "Cream agreement + seal",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v2": {
+          "file": "role-panels/legal/legal-v2.png",
+          "description": "Compliance checklist",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v3": {
+          "file": "role-panels/legal/legal-v3.png",
+          "description": "Document stack + seal",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        }
+      },
+      "mascot": {
+        "pose": "welcome",
+        "default_file": "mascot/welcome/koko-welcome-md.png",
+        "place_at": {
+          "x": 1240,
+          "y": 48,
+          "height": 300
+        },
+        "mirror_available": true,
+        "sizes_available": [
+          "sm",
+          "md",
+          "lg"
+        ]
+      }
+    },
+    "executives": {
+      "default_panel": "role-panels/executives/executives-v1.png",
+      "panel_variations": {
+        "v1": {
+          "file": "role-panels/executives/executives-v1.png",
+          "description": "North-star strategy slide",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v2": {
+          "file": "role-panels/executives/executives-v2.png",
+          "description": "Strategy pillars",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v3": {
+          "file": "role-panels/executives/executives-v3.png",
+          "description": "Vision memo",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        }
+      },
+      "mascot": {
+        "pose": "climb-higher",
+        "default_file": "mascot/climb-higher/koko-climb-higher-md.png",
+        "place_at": {
+          "x": 1210,
+          "y": 52,
+          "height": 275
+        },
+        "mirror_available": true,
+        "sizes_available": [
+          "sm",
+          "md",
+          "lg"
+        ]
+      }
+    },
+    "crew": {
+      "default_panel": "role-panels/crew/crew-v1.png",
+      "panel_variations": {
+        "v1": {
+          "file": "role-panels/crew/crew-v1.png",
+          "description": "Glass crew badge",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v2": {
+          "file": "role-panels/crew/crew-v2.png",
+          "description": "ID lanyard badge",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v3": {
+          "file": "role-panels/crew/crew-v3.png",
+          "description": "Sticker sheet",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        }
+      },
+      "mascot": {
+        "pose": "celebrate",
+        "default_file": "mascot/celebrate/koko-celebrate-md.png",
+        "place_at": {
+          "x": 1240,
+          "y": 48,
+          "height": 300
+        },
+        "mirror_available": true,
+        "sizes_available": [
+          "sm",
+          "md",
+          "lg"
+        ]
+      }
+    }
+  },
+  "caveats": [
+    "Route lines on the background pass through the mascot/panel zones; they are part of the background layer (not cut out around the mascot).",
+    "Banner CSS applies filter:drop-shadow on .mascot; component mascot PNGs are flat (no baked shadow) so you can restyle in Figma.",
+    "Glow behind mascot is on the background layer.",
+    "Only official Koko assets are included. New poses require assets from Kongsi design.",
+    "Panel captures may have slight anti-alias differences vs full-banner renders."
+  ]
+}

@@ -1,0 +1,4 @@
+# Browser cache for static assets. Applies to asset-served responses only; the worker sets
+# its own Cache-Control on the HTML shell.
+/*
+  Cache-Control: public, max-age=600, stale-while-revalidate=86400

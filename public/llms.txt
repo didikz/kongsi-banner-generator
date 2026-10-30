@@ -1,0 +1,9 @@
+# Kongsi LinkedIn Banner Generator
+
+A web tool for Kongsi crew to generate an official LinkedIn profile banner for their role and
+download it at 1584×396.
+
+## Pages
+
+- [Banner generator](https://kongsibanner.didiktrisusanto.dev/): pick a role, generate the
+  three panel styles, tune the Koko mascot pose and mirror, and download each banner as a PNG.
