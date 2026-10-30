@@ -20,7 +20,7 @@ const POSE_LABELS = {
   'carry-parcel': 'Carry Parcel',
 }
 
-const state = { role: null, pose: null, mirror: false, generated: false }
+const state = { role: null, pose: null, mirror: false }
 
 function $(id) {
   return document.getElementById(id)
@@ -94,7 +94,6 @@ function selectRole(layout, role) {
   state.role = role
   state.pose = layout.roles[role].mascot.pose
   state.mirror = false
-  state.generated = false
 
   for (const btn of $('role-list').querySelectorAll('button[data-role]')) {
     const active = btn.dataset.role === role
@@ -102,22 +101,13 @@ function selectRole(layout, role) {
     btn.setAttribute('aria-pressed', String(active))
   }
 
-  const generate = $('generate-btn')
-  generate.disabled = false
-  $('generate-hint').textContent = `${ROLE_LABELS[role] ?? role} selected — hit Generate banner.`
-
   $('result-role').textContent = ROLE_LABELS[role] ?? role
-  showResultPlaceholder()
   setMascotControlsLocked(false)
 
   syncPoseChips(layout)
   syncMirror()
   prefetchRoleAssets(layout, role)
-}
-
-function showResultPlaceholder() {
-  $('result-empty').classList.remove('hidden')
-  $('banner-list').innerHTML = ''
+  renderBanners(layout)
 }
 
 function setMascotControlsLocked(locked) {
@@ -152,7 +142,7 @@ function buildPoseChips(layout) {
     btn.addEventListener('click', () => {
       state.pose = pose
       syncPoseChips(layout)
-      if (state.generated) renderBanners(layout)
+      renderBanners(layout)
     })
     list.appendChild(btn)
   }
@@ -181,7 +171,7 @@ function buildMirrorToggle(layout) {
   $('mirror-toggle').addEventListener('click', () => {
     state.mirror = !state.mirror
     syncMirror()
-    if (state.generated) renderBanners(layout)
+    renderBanners(layout)
   })
 }
 
@@ -262,19 +252,10 @@ async function main() {
     buildPoseChips(layout)
     buildMirrorToggle(layout)
     fillSamples(layout)
-
-    $('generate-btn').addEventListener('click', () => {
-      if (!state.role) return
-      const result = $('result')
-      result.focus({ preventScroll: true })
-      state.generated = true
-      renderBanners(layout)
-    })
   } catch (err) {
     console.error(err)
     $('role-list').innerHTML =
       '<p class="text-sm text-orange">Couldn’t load the banner assets. Reload the page to try again.</p>'
-    $('generate-hint').textContent = 'Banners are unavailable until the assets load.'
   }
 }
 

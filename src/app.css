@@ -130,6 +130,10 @@
   }
 
   .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: left;
     border-radius: 0.75rem;
     border: 1px solid color-mix(in srgb, var(--color-navy) 15%, transparent);
     padding: 0.5rem 1rem;
