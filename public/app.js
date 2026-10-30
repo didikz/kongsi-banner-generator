@@ -121,8 +121,9 @@ function showResultPlaceholder() {
 
 function setMascotControlsLocked(locked) {
   const el = $('mascot-controls')
-  el.classList.toggle('locked-control', locked)
   el.classList.toggle('pointer-events-none', locked)
+  for (const btn of $('pose-list').querySelectorAll('button')) btn.disabled = locked
+  $('mirror-toggle').disabled = locked
 }
 
 // Warm the browser cache while the user reads, so the first Generate is instant.
@@ -145,6 +146,7 @@ function buildPoseChips(layout) {
     btn.dataset.pose = pose
     btn.textContent = POSE_LABELS[pose] ?? pose
     btn.className = chipClass(false)
+    btn.disabled = true
     btn.setAttribute('aria-pressed', 'false')
     btn.addEventListener('click', () => {
       state.pose = pose
