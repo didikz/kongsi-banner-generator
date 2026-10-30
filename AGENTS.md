@@ -18,8 +18,9 @@ npx wrangler deploy --dry-run   # bundle/assets check without uploading
 
 ## Asset duplication (easy trap)
 
-- `kongsi-banner-components/` is the source pack. `public/assets/` is the deployed copy —
-  they are **not** linked. After editing either, re-sync:
+- `kongsi-banner-components/` is the local-only source pack (gitignored). `public/assets/` is
+  the tracked, deployed copy — they are **not** linked. After editing the source pack,
+  re-sync it:
   `rsync -a --exclude '.DS_Store' kongsi-banner-components/ public/assets/`
 - Sample cards are static `<figure>`s in `public/index.html` (rendered at first paint to avoid
   CLS); `fillSamples()` only fills their captions from `layout.json`. Images load WebP

@@ -11,6 +11,9 @@ dist/
 .env
 .env.*
 
+# local-only source asset pack (public/assets/ is the tracked, deployed copy)
+kongsi-banner-components/
+
 # OS / editor
 .DS_Store
 *.log
