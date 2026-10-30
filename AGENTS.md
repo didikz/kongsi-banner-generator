@@ -70,9 +70,9 @@ Images must stay same-origin: loading them cross-origin taints the canvas and br
 ## UI notes
 
 - The result panel (`#result`) is always visible; before generation it shows the
-  `#result-empty` placeholder and the mascot controls are locked (`pointer-events-none` +
-  `opacity-60`). Do not re-add `hidden` to it — that collapses the right column to empty
-  space on desktop.
+  `#result-empty` placeholder and the mascot controls are locked with the `.locked-control`
+  visual class and native disabled controls. Do not re-add `hidden` to it — that collapses
+  the right column to empty space on desktop.
 
 ## Worker behavior
 

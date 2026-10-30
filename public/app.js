@@ -20,7 +20,7 @@ const POSE_LABELS = {
   'carry-parcel': 'Carry Parcel',
 }
 
-const state = { role: null, pose: null, mirror: false }
+const state = { role: null, pose: null, mirror: false, generated: false }
 
 function $(id) {
   return document.getElementById(id)
@@ -94,6 +94,7 @@ function selectRole(layout, role) {
   state.role = role
   state.pose = layout.roles[role].mascot.pose
   state.mirror = false
+  state.generated = false
 
   for (const btn of $('role-list').querySelectorAll('button[data-role]')) {
     const active = btn.dataset.role === role
@@ -151,7 +152,7 @@ function buildPoseChips(layout) {
     btn.addEventListener('click', () => {
       state.pose = pose
       syncPoseChips(layout)
-      renderBanners(layout)
+      if (state.generated) renderBanners(layout)
     })
     list.appendChild(btn)
   }
@@ -180,7 +181,7 @@ function buildMirrorToggle(layout) {
   $('mirror-toggle').addEventListener('click', () => {
     state.mirror = !state.mirror
     syncMirror()
-    renderBanners(layout)
+    if (state.generated) renderBanners(layout)
   })
 }
 
@@ -266,6 +267,7 @@ async function main() {
       if (!state.role) return
       const result = $('result')
       result.focus({ preventScroll: true })
+      state.generated = true
       renderBanners(layout)
     })
   } catch (err) {
