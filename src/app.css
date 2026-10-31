@@ -2,6 +2,13 @@
 
 /* Self-hosted fonts — no render-blocking third-party stylesheet (CSP: font-src 'self'). */
 @font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/plus-jakarta-sans-latin.woff2") format("woff2");
+}
+@font-face {
   font-family: "Inter";
   font-style: normal;
   font-weight: 100 900;
@@ -31,8 +38,8 @@
 }
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-display: "Montserrat", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
 
   /* Kongsi brand palette (from shipkongsi.com). */
   --color-navy: #0d1b2a;
@@ -47,6 +54,7 @@
   --color-red: #e53935;
   --color-ink: #172235;
   --color-ink-soft: #4a5568;
+  --color-ink-muted: #64707f;
   --color-page: #f2f4f7;
   --color-surface: #ffffff;
 }
