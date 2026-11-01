@@ -157,6 +157,13 @@
   .chip:hover {
     border-color: color-mix(in srgb, var(--color-teal) 55%, transparent);
   }
+  .chip:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  .chip:disabled:hover {
+    border-color: color-mix(in srgb, var(--color-navy) 15%, transparent);
+  }
   .chip-active {
     border-color: var(--color-teal);
     background: var(--color-teal);

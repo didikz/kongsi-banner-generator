@@ -127,6 +127,7 @@ function setMascotControlsLocked(locked) {
   el.classList.toggle('pointer-events-none', locked)
   for (const btn of $('pose-list').querySelectorAll('button')) btn.disabled = locked
   $('mirror-toggle').disabled = locked
+  $('mascot-lock-hint').classList.toggle('hidden', !locked)
 }
 
 // Warm the browser cache while the user reads, so the first Generate is instant.
