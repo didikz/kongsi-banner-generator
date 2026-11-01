@@ -44,7 +44,7 @@
       "w": 396,
       "h": 266
     },
-    "note": "Panel PNGs include padding around the 340\u00d7210 slot for rotation/shadow. When compositing, place the PNG at (slot.x - pad, slot.y - pad)."
+    "note": "Panel PNGs include padding around the 340×210 slot for rotation/shadow. When compositing, place the PNG at (slot.x - pad, slot.y - pad)."
   },
   "mascot_poses": {
     "welcome": {
@@ -735,6 +735,118 @@
           "sm",
           "md",
           "lg"
+        ]
+      }
+    },
+    "marketing": {
+      "default_panel": "role-panels/marketing/marketing-v1.png",
+      "panel_variations": {
+        "v1": {
+          "file": "role-panels/marketing/marketing-v1.png",
+          "description": "Ads Manager campaign card (ROAS/CPR/Spend/Conv + dual sparkline)",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          },
+          "file_2x": "role-panels/marketing/marketing-v1@2x.png"
+        },
+        "v2": {
+          "file": "role-panels/marketing/marketing-v2.png",
+          "description": "Sponsored ad preview + 14d ROAS chart",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v3": {
+          "file": "role-panels/marketing/marketing-v3.png",
+          "description": "Audience donut by city",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        }
+      },
+      "mascot": {
+        "pose": "celebrate",
+        "default_file": "mascot/celebrate/koko-celebrate-md.png",
+        "place_at": {
+          "x": 1240,
+          "y": 48,
+          "height": 300
+        },
+        "mirror_available": true,
+        "sizes_available": [
+          "sm",
+          "md"
+        ]
+      }
+    },
+    "business-development": {
+      "default_panel": "role-panels/business-development/business-development-v1.png",
+      "panel_variations": {
+        "v1": {
+          "file": "role-panels/business-development/business-development-v1.png",
+          "description": "Partner network + Corridor GMV sparkline KPI",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          },
+          "file_2x": "role-panels/business-development/business-development-v1@2x.png"
+        },
+        "v2": {
+          "file": "role-panels/business-development/business-development-v2.png",
+          "description": "Corridor GMV multi-line chart (3 corridors)",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        },
+        "v3": {
+          "file": "role-panels/business-development/business-development-v3.png",
+          "description": "Partner retention heat grid (cohorts)",
+          "place_at": {
+            "x": 872,
+            "y": 64,
+            "slot_x": 900,
+            "slot_y": 92,
+            "slot_w": 340,
+            "slot_h": 210
+          }
+        }
+      },
+      "mascot": {
+        "pose": "climb-higher",
+        "default_file": "mascot/climb-higher/koko-climb-higher-md.png",
+        "place_at": {
+          "x": 1210,
+          "y": 52,
+          "height": 275
+        },
+        "mirror_available": true,
+        "sizes_available": [
+          "sm",
+          "md"
         ]
       }
     }

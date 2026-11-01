@@ -22,11 +22,16 @@ npx wrangler deploy --dry-run   # bundle/assets check without uploading
   the tracked, deployed copy — they are **not** linked. After editing the source pack,
   re-sync it:
   `rsync -a --exclude '.DS_Store' kongsi-banner-components/ public/assets/`
-- Sample cards are static `<figure>`s in `public/index.html` (rendered at first paint to avoid
-  CLS); `fillSamples()` only fills their captions from `layout.json`. Images load WebP
+- Sample cards are three static `<figure>`s in `public/index.html` (rendered at first paint to
+  avoid CLS); `fillSamples()` picks three random entries from `EXAMPLE_POOL` and fills their
+  image, caption, and `data-role`/`data-variant` from `layout.json`. Images load WebP
   derivatives from `public/assets/examples/webp/` (800px wide, ~12 KB each). If the example
   PNGs change, regenerate them:
   `for f in public/assets/examples/*.png; do cwebp -q 80 -resize 800 0 "$f" -o "public/assets/examples/webp/$(basename "${f%.png}").webp"; done`
+- New role packs land in `kongsi-banner-components/pack-new-roles/` with their own README and
+  `layout-roles-addendum.json`. Merge panels into both `kongsi-banner-components/role-panels/`
+  and `public/assets/role-panels/`, deep-merge the addendum into both `layout.json` copies,
+  then add static `data-role` chips + icons in `public/index.html` and a `ROLE_LABELS` entry.
 - Role chips are static `<button data-role>` markup in `public/index.html` (rendered at first
   paint to avoid CLS); `wireRoleChips()` binds them. Adding a role means editing both the chip
   markup and `kongsi-banner-components/layout.json`.

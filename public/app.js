@@ -11,7 +11,19 @@ const ROLE_LABELS = {
   legal: 'Legal',
   executives: 'Executives',
   crew: 'Crew',
+  marketing: 'Marketing',
+  'business-development': 'Business Dev',
 }
+
+// Sample gallery pool; three are picked at random on each load.
+const EXAMPLE_POOL = [
+  { role: 'design', variant: 'v2' },
+  { role: 'finance', variant: 'v1' },
+  { role: 'finance', variant: 'v2' },
+  { role: 'legal', variant: 'v1' },
+  { role: 'product', variant: 'v3' },
+  { role: 'sales', variant: 'v2' },
+]
 
 const POSE_LABELS = {
   welcome: 'Welcome',
@@ -175,13 +187,31 @@ function buildMirrorToggle(layout) {
   })
 }
 
-function fillSamples(layout) {
-  for (const fig of document.querySelectorAll('#samples figure')) {
-    const { role, variant } = fig.dataset
-    fig.querySelector('[data-sample-role]').textContent = ROLE_LABELS[role] ?? role
-    fig.querySelector('[data-sample-desc]').textContent =
-      layout.roles[role]?.panel_variations[variant]?.description ?? ''
+function pickRandomExamples(count) {
+  const pool = [...EXAMPLE_POOL]
+  for (let i = pool.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[pool[i], pool[j]] = [pool[j], pool[i]]
   }
+  return pool.slice(0, count)
+}
+
+function fillSamples(layout) {
+  const figures = [...document.querySelectorAll('#samples figure')]
+  const picks = pickRandomExamples(figures.length)
+  figures.forEach((fig, index) => {
+    const pick = picks[index]
+    if (!pick) return
+    const label = ROLE_LABELS[pick.role] ?? pick.role
+    fig.dataset.role = pick.role
+    fig.dataset.variant = pick.variant
+    const img = fig.querySelector('img')
+    img.src = `/assets/examples/webp/recompose-${pick.role}-${pick.variant}.webp`
+    img.alt = `${label} sample banner`
+    fig.querySelector('[data-sample-role]').textContent = label
+    fig.querySelector('[data-sample-desc]').textContent =
+      layout.roles[pick.role]?.panel_variations[pick.variant]?.description ?? ''
+  })
 }
 
 async function renderBanners(layout) {
@@ -243,7 +273,7 @@ async function renderBanners(layout) {
 
 async function main() {
   try {
-    const layout = await fetch(LAYOUT_URL).then((r) => {
+    const layout = await fetch(LAYOUT_URL, { cache: 'no-cache' }).then((r) => {
       if (!r.ok) throw new Error(`layout.json ${r.status}`)
       return r.json()
     })
