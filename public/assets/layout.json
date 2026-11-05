@@ -32,7 +32,8 @@
     "excludes": [
       "role panel",
       "mascot"
-    ]
+    ],
+    "light": "background/background-light-1584x396.png"
   },
   "panel_slot": {
     "x": 900,
@@ -752,7 +753,8 @@
             "slot_w": 340,
             "slot_h": 210
           },
-          "file_2x": "role-panels/marketing/marketing-v1@2x.png"
+          "file_2x": "role-panels/marketing/marketing-v1@2x.png",
+          "file_light": "role-panels/marketing/light/marketing-v1.png"
         },
         "v2": {
           "file": "role-panels/marketing/marketing-v2.png",
@@ -764,7 +766,8 @@
             "slot_y": 92,
             "slot_w": 340,
             "slot_h": 210
-          }
+          },
+          "file_light": "role-panels/marketing/light/marketing-v2.png"
         },
         "v3": {
           "file": "role-panels/marketing/marketing-v3.png",
@@ -776,7 +779,8 @@
             "slot_y": 92,
             "slot_w": 340,
             "slot_h": 210
-          }
+          },
+          "file_light": "role-panels/marketing/light/marketing-v3.png"
         }
       },
       "mascot": {
@@ -808,7 +812,8 @@
             "slot_w": 340,
             "slot_h": 210
           },
-          "file_2x": "role-panels/business-development/business-development-v1@2x.png"
+          "file_2x": "role-panels/business-development/business-development-v1@2x.png",
+          "file_light": "role-panels/business-development/light/business-development-v1.png"
         },
         "v2": {
           "file": "role-panels/business-development/business-development-v2.png",
@@ -820,7 +825,8 @@
             "slot_y": 92,
             "slot_w": 340,
             "slot_h": 210
-          }
+          },
+          "file_light": "role-panels/business-development/light/business-development-v2.png"
         },
         "v3": {
           "file": "role-panels/business-development/business-development-v3.png",
@@ -832,7 +838,8 @@
             "slot_y": 92,
             "slot_w": 340,
             "slot_h": 210
-          }
+          },
+          "file_light": "role-panels/business-development/light/business-development-v3.png"
         }
       },
       "mascot": {

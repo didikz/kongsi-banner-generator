@@ -32,7 +32,7 @@ const POSE_LABELS = {
   'carry-parcel': 'Carry Parcel',
 }
 
-const state = { role: null, pose: null, mirror: false, showPanel: true }
+const state = { role: null, pose: null, mirror: false, showPanel: true, theme: 'dark' }
 
 function $(id) {
   return document.getElementById(id)
@@ -47,30 +47,39 @@ function loadImage(src) {
   })
 }
 
-async function compositeBanner(layout, role, variation, pose, mirror, showPanel) {
+async function compositeBanner(layout, role, variation, pose, mirror, showPanel, theme) {
   const roleDef = layout.roles[role]
   const placement = layout.mascot_poses[pose].banner_placement
+  const light = theme === 'light'
 
   const canvas = document.createElement('canvas')
   canvas.width = layout.canvas.width
   canvas.height = layout.canvas.height
   const ctx = canvas.getContext('2d')
 
-  const bg = await loadImage(`/assets/${layout.background.file}`)
+  const bgFile = light && layout.background.light ? layout.background.light : layout.background.file
+  const bg = await loadImage(`/assets/${bgFile}`)
   ctx.drawImage(bg, 0, 0)
 
   if (showPanel) {
     const varDef = roleDef.panel_variations[variation]
-    const panel = await loadImage(`/assets/${varDef.file}`)
+    const panelFile = light && varDef.file_light ? varDef.file_light : varDef.file
+    const panel = await loadImage(`/assets/${panelFile}`)
     ctx.drawImage(panel, varDef.place_at.x, varDef.place_at.y)
   }
 
   const mascotSrc = `/assets/mascot/${pose}/koko-${pose}-md${mirror ? '-mirror' : ''}.png`
   const mascot = await loadImage(mascotSrc)
   ctx.save()
-  ctx.shadowColor = 'rgba(0, 0, 0, 0.35)'
-  ctx.shadowBlur = 16
-  ctx.shadowOffsetY = 6
+  if (light) {
+    ctx.shadowColor = 'rgba(13, 27, 42, 0.18)'
+    ctx.shadowBlur = 22
+    ctx.shadowOffsetY = 10
+  } else {
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.35)'
+    ctx.shadowBlur = 16
+    ctx.shadowOffsetY = 6
+  }
   ctx.drawImage(mascot, placement.left, placement.top)
   ctx.restore()
 
@@ -130,6 +139,7 @@ function setMascotControlsLocked(locked) {
   for (const btn of $('pose-list').querySelectorAll('button')) btn.disabled = locked
   $('mirror-toggle').disabled = locked
   $('panel-toggle').disabled = locked
+  $('theme-toggle').disabled = locked
   $('mascot-lock-hint').classList.toggle('hidden', !locked)
 }
 
@@ -194,6 +204,25 @@ function syncPanel() {
   knob.classList.toggle('translate-x-0.5', !on)
 }
 
+function syncTheme() {
+  const on = state.theme === 'light'
+  const track = $('theme-track')
+  const knob = $('theme-knob')
+  $('theme-toggle').setAttribute('aria-checked', String(on))
+  track.classList.toggle('bg-teal', on)
+  track.classList.toggle('bg-navy/15', !on)
+  knob.classList.toggle('translate-x-4', on)
+  knob.classList.toggle('translate-x-0.5', !on)
+}
+
+function buildThemeToggle(layout) {
+  $('theme-toggle').addEventListener('click', () => {
+    state.theme = state.theme === 'light' ? 'dark' : 'light'
+    syncTheme()
+    renderBanners(layout)
+  })
+}
+
 function buildPanelToggle(layout) {
   $('panel-toggle').addEventListener('click', () => {
     state.showPanel = !state.showPanel
@@ -242,6 +271,7 @@ async function renderBanners(layout) {
   const pose = state.pose
   const mirror = state.mirror
   const showPanel = state.showPanel
+  const theme = state.theme
   if (!role) return
 
   const list = $('banner-list')
@@ -281,13 +311,14 @@ async function renderBanners(layout) {
       const preview = card.querySelector('.preview')
       const btn = card.querySelector('.download')
       try {
-        const canvas = await compositeBanner(layout, role, variation, pose, mirror, showPanel)
+        const canvas = await compositeBanner(layout, role, variation, pose, mirror, showPanel, theme)
         preview.replaceChildren(canvas)
         canvas.className = 'block h-auto w-full'
         btn.addEventListener('click', () => {
+          const suffix = theme === 'light' ? '-light' : ''
           const name = showPanel
-            ? `kongsi-${role}-${variation}.png`
-            : `kongsi-${role}-mascot-only.png`
+            ? `kongsi-${role}-${variation}${suffix}.png`
+            : `kongsi-${role}-mascot-only${suffix}.png`
           download(canvas, name)
         })
       } catch {
@@ -312,8 +343,10 @@ async function main() {
     buildPoseChips(layout)
     buildMirrorToggle(layout)
     buildPanelToggle(layout)
+    buildThemeToggle(layout)
     fillSamples(layout)
     syncPanel()
+    syncTheme()
   } catch (err) {
     console.error(err)
     $('role-list').innerHTML =

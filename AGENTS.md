@@ -50,6 +50,10 @@ the designed 300px height. Output must stay 1× (panels/mascots have no consiste
 Images must stay same-origin: loading them cross-origin taints the canvas and breaks
 `toBlob` downloads.
 
+The light banner theme swaps to `layout.background.light` and uses each variation's
+`file_light` when present (currently marketing/business-development). The theme toggle
+defaults to dark and is disabled until a role is selected.
+
 ## Tailwind v4 quirks
 
 - No `tailwind.config`; brand colors/fonts are `@theme` tokens in `src/app.css`.
